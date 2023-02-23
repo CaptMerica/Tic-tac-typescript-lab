@@ -24,7 +24,8 @@ const messageEl: HTMLElement | null = document.getElementById('message')!;
 const resetBtnEl: HTMLButtonElement | null = document.querySelector('button')!;
 
 /*----------------------------- Event Listeners -----------------------------*/
-document.querySelector('.board').addEventListener('click', handleClick);
+document.querySelector('.board')
+addEventListener('click', handleClick);
 resetBtnEl?.addEventListener('click', init);
 
 /*-------------------------------- Functions --------------------------------*/
@@ -32,7 +33,7 @@ resetBtnEl?.addEventListener('click', init);
 init();
 
 function init(): void {
-  board = [null, 1, null, -1, null, 1, -1, null, null];
+  board = [null, null, null, null, null, null, null, null, null];
   turn = 1;
   winner = false;
   tie = false;
@@ -44,7 +45,6 @@ function placePiece(idx: number): void {
 }
 
 function handleClick(evt: MouseEvent): void {
-  console.log((<Element>evt.target).id);
   const sqIdx: number = parseInt((<Element>evt.target).id.replace('sq', ''));
 
   if (isNaN(sqIdx) || board[sqIdx] || winner) return;
